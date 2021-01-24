@@ -25,6 +25,13 @@
     </style>
   </head>
   <body>
+    Theme Selector: <select id="theme">
+      <option value="dark">Dark</option>
+      <option value="light" selected>Light</option>
+    </select>
+    <br /><br />
+    <div id="PlaylistPlayer" class="theme-light"></div>
+    
     <div class="wrapper">
       <h1>Playlist Player</h1>
       <p>Plays a series of mp3s, defined in JSON, as a playlist.</p>
@@ -101,11 +108,6 @@
   })
 &lt;/script&gt;
       </pre>
-      Theme Selector: <select id="theme">
-        <option value="dark">Dark</option>
-        <option value="light" selected>Light</option>
-      </select>
-      <br /><br />
     </div>
     <script id="Playlist" type="application/json">
     {
@@ -154,7 +156,6 @@
     }
     </script>
     <link rel="stylesheet" href="dist/player.min.css">
-    <div id="PlaylistPlayer" class="theme-light"></div>
     <script src="dist/player.min.js" charset="utf-8"></script>
     <script>
       var Playlist = document.getElementById('Playlist')
