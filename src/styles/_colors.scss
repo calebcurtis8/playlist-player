@@ -1,0 +1,25 @@
+.theme-light{
+  --gray: #CCC;
+  --btnBg: #DDD;
+  --text: #000;
+  --trackColor: #FFF;
+  --bgColor: #FFF;
+  --borderColor: #000;
+  --progressColor: #CCC;
+}
+.theme-dark{
+  --gray: #AAA;
+  --btnBg: #666;
+  --text: #FFF;
+  --trackColor: #000;
+  --bgColor: #000;
+  --borderColor: #FFF;
+  --progressColor: #555;
+}
+$gray: var(--gray);
+$btnBg: var(--btnBg);
+$textColor: var(--text);
+$trackColor: var(--trackColor);
+$bgColor: var(--bgColor);
+$borderColor:var(--borderColor);
+$progressColor: var(--progressColor);
