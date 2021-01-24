@@ -12,6 +12,8 @@
 * Module export
 * Check if provided JSON is already an object, as it would be when used in a module
 
+[Demo Installation](https://calebcurtis8.github.io/playlist-player/)
+
 ## Example Installation:
 ```
 <script id="Playlist" type="application/json">
