@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Playlist Audio Player Demo</title>
+    <style type="text/css">
+    html,body{
+      background: var(--bgColor);
+      color: var(--text);
+      font-family: Helvetica, sans-serif;
+    }
+    code,pre{
+      font-family: monospace;
+      background: #EEE;
+      color: #000;
+      padding: 1em;
+    }
+    p{
+      line-height: 1.5;
+    }
+    .wrapper{
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Playlist Player</h1>
+      <p>Plays a series of mp3s, defined in JSON, as a playlist.</p>
+      <p>Lightweight, flexible, and responsive.</p>
+      <p>No dependencies, light and dark themes.</p>
+      <p>Supports timestamped comments to provide more info on a moment or section of the audio.</p>
+      <p>Set the theme with class <code>.theme-dark</code> or <code>.theme-light</code> on <code>#PlaylistPlayer</code></p>
+      Example Installation:
+      <pre>
+&lt;script id="Playlist" type="application/json"&gt;
+{
+  "artist": "Example Artist",
+  "album": "First Album",
+  "artwork": "./demo/artwork/tree.jpg",
+  "tracks":
+  [
+    {
+      "title": "WahOoh",
+      "artist": "Saxophone Sketches",
+      "file": "./demo/mp3/wahooh.mp3",
+      "artwork": "./demo/artwork/tree.jpg",
+      "stamps": [
+        {
+          "time": 13,
+          "message": "flutes"
+        }
+      ]
+    },
+    {
+      "title": "Forest",
+      "artist": "Saxophone Sketches",
+      "file": "./demo/mp3/saxophone-forest.mp3",
+      "artwork": "./demo/artwork/plants.jpg"
+    },
+    {
+      "title": "Phrygian",
+      "album": "From another album",
+      "artist": "Saxophone Sketches and Friends",
+      "file": "./demo/mp3/phrygian-sax.mp3",
+      "artwork": "./demo/artwork/sunny.jpg",
+      "stamps": [
+        {
+          "time": 15,
+          "message": "A quick message"
+        },
+        {
+          "time": 92,
+          "duration": 20,
+          "message": "A longer section, marked"
+        }
+      ]
+    }
+  ]
+}
+&lt;/script&gt;
+&lt;div id="PlaylistPlayer" class="theme-light"&gt;&lt;/div&gt;
+&lt;link rel="stylesheet" href="./demo/dist/player.min.css"&gt;
+&lt;script src="./demo/dist/player.min.js" charset="utf-8">&lt;/script&gt;
+
+&lt;script&gt;
+  var Playlist = document.getElementById('Playlist')
+  var Player = document.getElementById('PlaylistPlayer')
+
+  /*
+    PlaylistPlayer(JSONPlaylist, Element, Separator, Strings/Icons)
+  */
+  let myplaylist = new PlaylistPlayer(Playlist, Player, ': ',{
+    play: '&#9654;',
+    pause: '&#x23F8;&#xFE0E;',
+    stop: '&#11035;',
+    next: '&#x23ED;&#xFE0E;',
+    prev: '&#x23EE;&#xFE0E;',
+    mute: '&#128263;'
+  })
+&lt;/script&gt;
+      </pre>
+      Theme Selector: <select id="theme">
+        <option value="dark">Dark</option>
+        <option value="light" selected>Light</option>
+      </select>
+      <br /><br />
+    </div>
+    <script id="Playlist" type="application/json">
+    {
+      "artist": "Example Artist",
+      "album": "First Album",
+      "artwork": "./demo/artwork/tree.jpg",
+      "tracks":
+      [
+        {
+          "title": "WahOoh",
+          "artist": "Saxophone Sketches",
+          "file": "./demo/mp3/wahooh.mp3",
+          "artwork": "./demo/artwork/tree.jpg",
+          "stamps": [
+            {
+              "time": 13,
+              "message": "flutes"
+            }
+          ]
+        },
+        {
+          "title": "Forest",
+          "artist": "Saxophone Sketches",
+          "file": "./demo/mp3/saxophone-forest.mp3",
+          "artwork": "./demo/artwork/plants.jpg"
+        },
+        {
+          "title": "Phrygian",
+          "album": "From another album",
+          "artist": "Saxophone Sketches and Friends",
+          "file": "./demo/mp3/phrygian-sax.mp3",
+          "artwork": "./demo/artwork/sunny.jpg",
+          "stamps": [
+            {
+              "time": 15,
+              "message": "A quick message"
+            },
+            {
+              "time": 92,
+              "duration": 20,
+              "message": "A longer section, marked"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="stylesheet" href="./demo/dist/player.min.css">
+    <div id="PlaylistPlayer" class="theme-light"></div>
+    <script src="./demo/dist/player.min.js" charset="utf-8"></script>
+    <script>
+      var Playlist = document.getElementById('Playlist')
+      var Player = document.getElementById('PlaylistPlayer')
+
+      /*
+        PlaylistPlayer(JSONPlaylist, Element, Separator, Strings/Icons)
+      */
+      let myplaylist = new PlaylistPlayer(Playlist, Player, ': ',{
+        play: '&#9654;',
+        pause: '&#x23F8;&#xFE0E;',
+        stop: '&#11035;',
+        next: '&#x23ED;&#xFE0E;',
+        prev: '&#x23EE;&#xFE0E;',
+        mute: '&#128263;'
+      })
+    </script>
+    <script type="text/javascript">
+      var themeSwitcher = document.getElementById('theme')
+      var player = document.getElementById('PlaylistPlayer')
+      themeSwitcher.addEventListener('change', function(){
+        player.classList.remove('theme-light','theme-dark');
+        player.classList.add('theme-'+themeSwitcher.value);
+        document.body.classList.remove('theme-light','theme-dark');
+        document.body.classList.add('theme-'+themeSwitcher.value);
+      })
+    </script>
+  </body>
+</html>
