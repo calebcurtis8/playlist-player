@@ -10,11 +10,19 @@
       color: var(--text);
       font-family: Helvetica, sans-serif;
     }
+    .header{
+      font-size: 24px;
+      font-weight: 600;
+    }
     code,pre{
       font-family: monospace;
       background: #EEE;
       color: #000;
       padding: 1em;
+      display: inline-block;
+    }
+    pre {
+      display: block;
     }
     p{
       line-height: 1.5;
@@ -33,10 +41,10 @@
       </select>
       <br /><br />
     </div>
-    <div id="PlaylistPlayer" class="theme-light"></div>
+    <div id="PlaylistPlayer" class="rounded-xl bg-gradient-to-r from-slate-200 to-slate-300 overflow-hidden theme-light"></div>
 
     <div class="wrapper">
-      <h1>Playlist Player</h1>
+      <h1 class="header">Playlist Player</h1>
       <p>Plays a series of mp3s, defined in JSON, as a playlist.</p>
       <p>Lightweight, flexible, and responsive.</p>
       <p>No dependencies, light and dark themes.</p>

@@ -1,18 +1,20 @@
 {
   "name": "playlist-player",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "local": "npx http-server /Users/calebcurtis/websites/playlist-player",
-    "build": "browserify src/scripts/player.js -t babelify -t envify -t uglifyify | uglifyjs -cm > dist/player.min.js && sass src/styles/player.scss dist/player.min.css --style=compressed",
-    "start": "concurrently \"watchify src/scripts/player.js -o dist/player.min.js\" \"sass src/styles/player.scss dist/player.min.css --watch\""
+    "build": "browserify src/scripts/player.js -t babelify -t envify -t uglifyify | uglifyjs -cm > dist/player.min.js && postcss src/styles/player.css -o dist/player.min.css",
+    "start": "concurrently \"watchify src/scripts/player.js -o dist/player.min.js\" \"postcss src/styles/player.css -o dist/player.min.css --watch\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.12.10"
+    "@babel/core": "^7.12.10",
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^5.0.14"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
@@ -23,6 +25,15 @@
     "browserify": "^17.0.0",
     "concurrently": "^5.3.0",
     "envify": "^4.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^3.0.7",
     "uglify-js": "^3.12.5",
     "uglifyify": "^5.0.2",
     "watchify": "^3.11.1"

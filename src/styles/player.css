@@ -1,0 +1,92 @@
+@import 'colors';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DISPLAY */
+.playlist-player {
+	/*helpers*/
+	* {
+		@apply box-border;
+	}
+  button {
+    @apply appearance-none cursor-pointer border-solid;
+  	>* {
+  		pointer-events: none;
+  	}
+  }
+  img {
+  	max-width: 100%;
+  }
+  :focus{
+    outline: Highlight auto 1px;
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  :focus-visible {
+    outline: Highlight auto 1px;
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+
+  ol {
+  	grid-area: list;
+		@apply m-0 p-0;
+  	li {
+  		@apply leading-loose m-0 ml-4;
+  		button {
+  			@apply flex appearance-none border-0 bg-transparent leading-loose cursor-pointer w-full text-left text-text_color;
+  		}
+  		button.active {
+  			@apply font-bold;
+  		}
+  	}
+  }
+  .player-display {
+  	grid-template-areas: 'song artist' 'song album' 'progress progress' 'controls controls' 'list list';
+  	grid-template-columns: 1fr 1fr;
+  }
+  [data-label="song"] {
+  	grid-area: song;
+  	font-size: 1.5em;
+  }
+  [data-label="artist"] {
+  	grid-area: artist;
+  }
+  [data-label="album"] {
+  	grid-area: album;
+  }
+  /*PROGRESS*/
+  .progress-container {
+  	grid-area: progress;
+  }
+  .time {
+		@apply absolute top-1/2 left-2 transform -translate-y-1/2 pointer-events-none;
+  }
+  /*CONTROLS*/
+  .controls {
+		@apply flex px-4 w-full;
+  	grid-area: controls;
+  	button {
+			@apply flex-1 h-10 mx-8 appearance-none border-2 border-gray bg-btn_bg last:mr-0;
+      &:nth-child(n-2){
+        @apply ml-0;
+      }
+  	}
+  }
+  /*STAMPS*/
+  .stamp {
+		@apply absolute inset-0 w-1 cursor-pointer bg-yellow-600 bg-opacity-50 z-10;
+  	&:hover, &.visible {
+  		&:after {
+				@apply w-auto absolute left-1/2 transform -translate-x-1/2 bg-bg_color text-text_color border border-border_color text-sm z-20 p-2;
+  			min-width: 150px;
+  			top: 90%;
+  			content: attr(data-label);
+  		}
+  	}
+  }
+}

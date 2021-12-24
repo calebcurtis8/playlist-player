@@ -16,10 +16,3 @@
   --borderColor: #FFF;
   --progressColor: #555;
 }
-$gray: var(--gray);
-$btnBg: var(--btnBg);
-$textColor: var(--text);
-$trackColor: var(--trackColor);
-$bgColor: var(--bgColor);
-$borderColor:var(--borderColor);
-$progressColor: var(--progressColor);
